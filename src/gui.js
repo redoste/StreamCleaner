@@ -1,3 +1,5 @@
+const log = require("./log");
+
 module.exports = function(){
 	// Viewport init
 	this.viewport = document.querySelector("meta[name=viewport]");
@@ -23,13 +25,28 @@ module.exports = function(){
 	h1.innerText = "Stream Cleaner";
 	this.div.appendChild(h1);
 
-	this.p = document.createElement("p");
-	this.p.innerText = "Loading...";
-	this.div.appendChild(this.p);
+	this.infoSpan = document.createElement("span");
+	this.infoSpan.appendChild(document.createTextNode("Loading..."));
+	this.div.appendChild(this.infoSpan);
 
 	document.body.appendChild(this.div);
 
-	this.finished = function(){
-		this.p.innerText = "";
+	this.finished = function(urls){
+		this.infoSpan.remove();
+		for(let url of urls){
+			log("New link to the gui: " + JSON.stringify(url));
+
+			let a = document.createElement("a");
+			a.href = url.url;
+			a.appendChild(document.createTextNode(url.url));
+
+			if(typeof url.info !== undefined && url.info !== null){
+				let strong = document.createElement("strong");
+				strong.appendChild(document.createTextNode(url.info + ": "));
+				this.div.appendChild(strong);
+			}
+			this.div.appendChild(a);
+			this.div.appendChild(document.createElement("br"));
+		}
 	}
 }
