@@ -5,10 +5,10 @@ A bookmarklet for extract direct links of videos on streaming platforms.
 ## Feature
 
 Compatible streaming platforms:
-![Rutube](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/rutube.png)Rutube
-![Openload](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/openload.png)Openload
-![Streamango](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/streamango.png)Streamango
-![Mystream.la](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/mystreamla.png)Mystream.la
+* ![Rutube](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/rutube.png)Rutube
+* ![Openload](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/openload.png)Openload
+* ![Streamango](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/streamango.png)Streamango
+* ![Mystream.la](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/mystreamla.png)Mystream.la
 If you use StreamCleaner on a non-compatible web site, it will search for iframes and will list it.
 
 ## Installation and usage
@@ -23,9 +23,9 @@ To use it, click on the bookmark when you are in the we site were you want to ex
 ## Build
 
 To manually build StreamCleaner you need `nodejs` and `npm` or `yarn`.
-[NodeJS](https://nodejs.org/)
-[NPM](https://www.npmjs.com/)
-[Yarn](https://yarnpkg.com/)
+* [NodeJS](https://nodejs.org/)
+* [NPM](https://www.npmjs.com/)
+* [Yarn](https://yarnpkg.com/)
 
 First download the source code of StreamCleaner:
 If you have git use `git clone`
