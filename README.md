@@ -9,6 +9,7 @@ Compatible streaming platforms:
 * ![Openload](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/openload.png)Openload
 * ![Streamango](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/streamango.png)Streamango
 * ![Mystream.la](https://raw.githubusercontent.com/redoste/StreamCleaner/master/img/mystreamla.png)Mystream.la
+
 If you use StreamCleaner on a non-compatible web site, it will search for iframes and will list it.
 
 ## Installation and usage
