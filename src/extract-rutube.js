@@ -13,28 +13,25 @@ module.exports = function(){
 		xhr.open('GET', url, true);
 		xhr.send(null);
 	}
-	for(link of document.getElementsByTagName("link")){
-		if(link.rel == "canonical"){
-			let parser = document.createElement("a");
-			parser.href = link.href;
-			let videoId = /^\/?video\/(.+?)\/?$/.exec(parser.pathname)[1];
-			let isPrivate = false;
-			let privateKey = "";
-			if(videoId.split("/")[0] == "private"){
-				videoId = videoId.split("/")[1];
-				isPrivate = true;
-				privateKey = "&p=" + parser.search.split("p=")[1];
-			}
-
-			getRequest(location.protocol + "//rutube.ru/api/play/options/" + encodeURIComponent(videoId) + "/?format=json" + privateKey, function(responseText){
-				let videoJSONpath = JSON.parse(responseText).video_balancer.json;
-				getRequest(videoJSONpath, function(responseText){
-					let formats = JSON.parse(responseText).results;
-					for(f of formats){
-						log("Rutube Url: " + f);
-					}
-				});
-			});
-		}
+	let link = document.querySelector("link[rel=canonical]");
+	let parser = document.createElement("a");
+	parser.href = link.href;
+	let videoId = /^\/?video\/(.+?)\/?$/.exec(parser.pathname)[1];
+	let isPrivate = false;
+	let privateKey = "";
+	if(videoId.split("/")[0] == "private"){
+		videoId = videoId.split("/")[1];
+		isPrivate = true;
+		privateKey = "&p=" + parser.search.split("p=")[1];
 	}
+	getRequest(location.protocol + "//rutube.ru/api/play/options/" + encodeURIComponent(videoId) + "/?format=json" + privateKey, function(responseText){
+		let videoM3Upath = JSON.parse(responseText).video_balancer.m3u8;
+		getRequest(videoM3Upath, function(responseText){
+			let M3Ulines = responseText.split("\n");
+			for(l of M3Ulines){
+				if(l[0] != "#" && l != "")
+					log("Rutube Url: " + l);
+			}
+		});
+	});
 }
