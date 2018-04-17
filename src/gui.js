@@ -14,11 +14,7 @@ module.exports = function(){
 	this.div = document.createElement("div");
 
 	this.div.style.position = "absolute";
-	this.div.style.top = 0;
-	this.div.style.left = 0;
 	this.div.style["z-index"] = 1000000;
-	this.div.style.width = "100%";
-	this.div.style.height = "100%";
 	this.div.style["background-color"] = "white";
 
 	let h1 = document.createElement("h1");
@@ -29,7 +25,8 @@ module.exports = function(){
 	this.infoSpan.appendChild(document.createTextNode("Loading..."));
 	this.div.appendChild(this.infoSpan);
 
-	document.body.appendChild(this.div);
+	document.documentElement.appendChild(this.div);
+	document.body.style.display = "none";
 
 	this.finished = function(urls){
 		this.infoSpan.remove();
