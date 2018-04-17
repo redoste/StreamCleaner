@@ -1,6 +1,6 @@
 const log = require("./log");
 
-module.exports = function(){
+module.exports = function(callback){
 
 	function decodeURL(url, value){
 		let ALPHABET = '=/+9876543210zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA';
@@ -28,12 +28,14 @@ module.exports = function(){
 	}
 
 	let allFormats = /({[^}]*\bsrc\s*:\s*[^}]*})/.exec(document.documentElement.innerHTML);
+	let output = [];
 	for(format of allFormats){
 		let encodedUrl = /src\s*:\s*[^(]+\(([^)]*)\)[\s,]*/.exec(format);
 		let formatDetail = format.replace(encodedUrl[0], "");
 		let encodedUrlValue = encodedUrl[1].split(",")[1];
 		encodedUrl = encodedUrl[1].split(",")[0].split("'")[1];
 		decodedUrl = decodeURL(encodedUrl, encodedUrlValue);
-		log("Streamango URL: " + formatDetail + " " + decodedUrl);
+		output.push(decodedUrl);
 	}
+	callback(output);
 }

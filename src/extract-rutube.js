@@ -1,6 +1,6 @@
 const log = require("./log");
 
-module.exports = function(){
+module.exports = function(callback){
 	function getRequest(url, callback) {
 		let xhr;
 		if(typeof XMLHttpRequest !== 'undefined') xhr = new XMLHttpRequest();
@@ -29,8 +29,10 @@ module.exports = function(){
 		getRequest(videoM3Upath, function(responseText){
 			let M3Ulines = responseText.split("\n");
 			for(l of M3Ulines){
+				let output = [];
 				if(l[0] != "#" && l != "")
-					log("Rutube Url: " + l);
+					output.push(l);
+				callback(output);
 			}
 		});
 	});

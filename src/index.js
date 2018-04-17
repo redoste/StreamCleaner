@@ -16,6 +16,8 @@ const gui = require("./gui");
 		}
 	}
 	let guiInstance = new gui();
-	hoster.extract();
-	guiInstance.finished();
+	hoster.extract(function(output){
+		for (let l of output) log(l);
+		guiInstance.finished();
+	});
 })();

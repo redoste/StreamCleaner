@@ -1,8 +1,10 @@
 const log = require("./log");
 
-module.exports = function(){
+module.exports = function(callback){
 	let iframes = document.getElementsByTagName("iframe");
+	let output = [];
 	for(let iframe of iframes){
-		log("Iframe found: " + iframe.src);
+		output.push(iframe.src);
 	}
+	callback(output);
 }
