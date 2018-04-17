@@ -28,8 +28,9 @@ module.exports = function(callback){
 		let videoM3Upath = JSON.parse(responseText).video_balancer.m3u8;
 		getRequest(videoM3Upath, function(responseText){
 			let M3Ulines = responseText.split("\n");
+			let output = [{url: null, info: "Due to Rutube limitation the video can't be extracted in only one file."},
+				{url: null, info: "This is m3u files who's contain the list of segmented files, it must be read with a compatible player like VLC in network stream mode."}];
 			for(l of M3Ulines){
-				let output = [];
 				if(l[0] != "#" && l != ""){
 					let formatDetail = /^http.*?i=[0-9]+x([0-9]+)_[0-9]+$/.exec(l)[1] + "p";
 					output.push({
@@ -37,8 +38,9 @@ module.exports = function(callback){
 						info: formatDetail
 					});
 				}
-				callback(output);
 			}
+			log(JSON.stringify(output));
+			callback(output);
 		});
 	});
 }

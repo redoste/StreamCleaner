@@ -32,18 +32,25 @@ module.exports = function(){
 		this.infoSpan.remove();
 		for(let url of urls){
 			log("New link to the gui: " + JSON.stringify(url));
-
-			let a = document.createElement("a");
-			a.href = url.url;
-			a.appendChild(document.createTextNode(url.url));
-
-			if(typeof url.info !== undefined && url.info !== null){
+			if(typeof url.url === undefined || url.url === null){
 				let strong = document.createElement("strong");
-				strong.appendChild(document.createTextNode(url.info + ": "));
+				strong.appendChild(document.createTextNode(url.info));
 				this.div.appendChild(strong);
+				this.div.appendChild(document.createElement("br"));
 			}
-			this.div.appendChild(a);
-			this.div.appendChild(document.createElement("br"));
+			else{
+				let a = document.createElement("a");
+				a.href = url.url;
+				a.appendChild(document.createTextNode(url.url));
+
+				if(typeof url.info !== undefined && url.info !== null){
+					let strong = document.createElement("strong");
+					strong.appendChild(document.createTextNode(url.info + ": "));
+					this.div.appendChild(strong);
+				}
+				this.div.appendChild(a);
+				this.div.appendChild(document.createElement("br"));
+			}
 		}
 	}
 }
