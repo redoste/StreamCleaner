@@ -35,7 +35,11 @@ module.exports = function(callback){
 		let encodedUrlValue = encodedUrl[1].split(",")[1];
 		encodedUrl = encodedUrl[1].split(",")[0].split("'")[1];
 		decodedUrl = decodeURL(encodedUrl, encodedUrlValue);
-		output.push(decodedUrl);
+		let formatOutput = {
+			url: decodedUrl,
+			info: /^{.*?height:\s*?([0-9]+),.*}$/.exec(formatDetail)[1] + "p"
+		};
+		output.push(formatOutput);
 	}
 	callback(output);
 }

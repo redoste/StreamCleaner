@@ -2,5 +2,5 @@ const log = require("./log");
 
 module.exports = function(callback){
 	let videoUrl = document.getElementsByClassName("jw-video")[0].src;
-	callback([videoUrl]);
+	callback([{url: videoUrl, info: null}]);
 }

@@ -30,8 +30,13 @@ module.exports = function(callback){
 			let M3Ulines = responseText.split("\n");
 			for(l of M3Ulines){
 				let output = [];
-				if(l[0] != "#" && l != "")
-					output.push(l);
+				if(l[0] != "#" && l != ""){
+					let formatDetail = /^http.*?i=[0-9]+x([0-9]+)_[0-9]+$/.exec(l)[1] + "p";
+					output.push({
+						url: l,
+						info: formatDetail
+					});
+				}
 				callback(output);
 			}
 		});
