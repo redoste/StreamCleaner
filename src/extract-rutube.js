@@ -1,6 +1,7 @@
 //extract-rutube: Module to extract videos from Rutube
 
 const log = require("./log");
+const xhr = require("./xhr");
 
 /*
 	extract-rutube(): @param callback: function(videos) Called when the parsing is finished
@@ -8,18 +9,6 @@ const log = require("./log");
 */
 
 module.exports = function(callback){
-	function getRequest(url, callback) {
-		let xhr;
-		if(typeof XMLHttpRequest !== 'undefined') xhr = new XMLHttpRequest();
-		else{ alert("Use a recent browser");  return;}
-		xhr.onreadystatechange = function() {
-			if(xhr.readyState < 4) { return; }
-			if(xhr.status !== 200) { return; }
-			if(xhr.readyState === 4) { callback(xhr.responseText); }
-		}
-		xhr.open('GET', url, true);
-		xhr.send(null);
-	}
 	let link = document.querySelector("link[rel=canonical]");
 	let parser = document.createElement("a");
 	parser.href = link.href;
@@ -31,9 +20,9 @@ module.exports = function(callback){
 		isPrivate = true;
 		privateKey = "&p=" + parser.search.split("p=")[1];
 	}
-	getRequest(location.protocol + "//rutube.ru/api/play/options/" + encodeURIComponent(videoId) + "/?format=json" + privateKey, function(responseText){
+	xhr.get(location.protocol + "//rutube.ru/api/play/options/" + encodeURIComponent(videoId) + "/?format=json" + privateKey, function(responseText){
 		let videoM3Upath = JSON.parse(responseText).video_balancer.m3u8;
-		getRequest(videoM3Upath, function(responseText){
+		xhr.get(videoM3Upath, function(responseText){
 			let M3Ulines = responseText.split("\n");
 			let output = [{url: null, info: "Due to Rutube limitation the video can't be extracted in only one file."},
 				{url: null, info: "This is m3u files who's contain the list of segmented files, it must be read with a compatible player like VLC in network stream mode."}];
