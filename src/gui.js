@@ -36,7 +36,7 @@ module.exports = function(){
 
 	/*
 		gui.finished(): @params urls: Array of videos urls to print to the gui
-										@return: void
+				@return: void
 	*/
 	this.finished = function(urls){
 		this.infoSpan.remove();

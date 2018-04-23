@@ -4,7 +4,7 @@ const log = require("./log");
 
 /*
 	extract-streamango(): @param callback: function(videos) Called when the parsing is finished
-									 			@return: void
+			      @return: void
 */
 
 module.exports = function(callback){

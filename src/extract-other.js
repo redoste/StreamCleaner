@@ -4,7 +4,7 @@ const log = require("./log");
 
 /*
 	extract-other(): @param callback: function(iframes) Called when the parsing is finished
-									 @return: void
+			 @return: void
 */
 module.exports = function(callback){
 	let iframes = document.getElementsByTagName("iframe");
