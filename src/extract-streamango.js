@@ -1,4 +1,11 @@
+//extract-streamango: Module to extract videos from Streamango
+
 const log = require("./log");
+
+/*
+	extract-streamango(): @param callback: function(videos) Called when the parsing is finished
+									 			@return: void
+*/
 
 module.exports = function(callback){
 

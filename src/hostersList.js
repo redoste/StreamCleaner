@@ -1,3 +1,5 @@
+//hostersList: List of videos hosters
+
 module.exports = [
 	{name: "Openload", urlpattern: /https?:\/\/(?:www\.)?(?:openload\.(?:co|io|link)|oload\.(?:tv|stream|site|xyz))\/(?:f|embed)\/([a-zA-Z0-9-_]+)/i, extract: require("./extract-openload")},
 	{name: "Rutube", urlpattern: /https?:\/\/rutube\.ru\/(?:video|(?:play\/)?embed)\/(?:[A-Za-z0-9])(?:\?p=[A-Za-z0-9])?/i, extract: require("./extract-rutube")},

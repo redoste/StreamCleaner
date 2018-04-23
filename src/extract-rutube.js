@@ -1,4 +1,11 @@
+//extract-rutube: Module to extract videos from Rutube
+
 const log = require("./log");
+
+/*
+	extract-rutube(): @param callback: function(videos) Called when the parsing is finished
+									 	@return: void
+*/
 
 module.exports = function(callback){
 	function getRequest(url, callback) {
@@ -9,7 +16,7 @@ module.exports = function(callback){
 			if(xhr.readyState < 4) { return; }
 			if(xhr.status !== 200) { return; }
 			if(xhr.readyState === 4) { callback(xhr.responseText); }
-		}		
+		}
 		xhr.open('GET', url, true);
 		xhr.send(null);
 	}

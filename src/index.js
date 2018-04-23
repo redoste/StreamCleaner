@@ -1,3 +1,5 @@
+//index: Main module
+
 const log = require("./log");
 const gui = require("./gui");
 

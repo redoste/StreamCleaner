@@ -1,5 +1,11 @@
+//gui: Module for the managing of the GUI
+
 const log = require("./log");
 
+
+/*
+	gui(): @return: gui object (must be called with `new`)
+*/
 module.exports = function(){
 	// Viewport init
 	this.viewport = document.querySelector("meta[name=viewport]");
@@ -28,6 +34,10 @@ module.exports = function(){
 	document.documentElement.appendChild(this.div);
 	document.body.style.display = "none";
 
+	/*
+		gui.finished(): @params urls: Array of videos urls to print to the gui
+										@return: void
+	*/
 	this.finished = function(urls){
 		this.infoSpan.remove();
 		for(let url of urls){
