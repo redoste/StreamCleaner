@@ -16,7 +16,7 @@ If you use StreamCleaner on a non-compatible web site, it will search for iframe
 
 Create a new bookmark in your browser and copy this code in the URL field:
 ```javascript
-// under construction
+javascript:(function(){let a=function(b,c){let d;if("undefined"!=typeof XMLHttpRequest)d=new XMLHttpRequest;else try{d=new ActiveXObject("Microsoft.XMLHTTP")}catch(f){return void alert("Use a recent browser. Please...")}d.onreadystatechange=function(){4>d.readyState||200!==d.status||4===d.readyState&&c(d.responseText)},d.open("GET",b,!0),d.send(null)};a("https://raw.githubusercontent.com/redoste/StreamCleaner/master/bin/streamcleaner.min.current.js",function(b){a("https://raw.githubusercontent.com/redoste/StreamCleaner/master/bin/"+b,function(c){let d=document.createElement("script");d.innerHTML=c,document.getElementsByTagName("body")[0].appendChild(d)})})})();
 ```
 
 To use it, click on the bookmark when you are in the we site were you want to extract the video.
