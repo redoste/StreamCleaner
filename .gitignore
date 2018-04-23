@@ -19,4 +19,5 @@ node_modules/
 .yarn-integrity
 
 # Build output
-bin/
+bin/streamcleaner.js
+bin/streamcleaner.min.js
