@@ -2,6 +2,8 @@
 
 A bookmarklet for extract direct links of videos on streaming platforms.
 
+## :warning: DON'T USE THIS ANYMORE. PREFER [youtube-dl](https://ytdl-org.github.io/youtube-dl/index.html).
+
 ## Feature
 
 Compatible streaming platforms:
